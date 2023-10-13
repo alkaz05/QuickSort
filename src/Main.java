@@ -1,22 +1,34 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     static int k=0;
 
     public static void main(String[] args) throws FileNotFoundException {
-        int[] arr = readArrayFromF("INPUT");
+        //int[] arr = readArrayFromF("INPUT");
+        int[] arr = genRandArray(100);
         System.out.println(Arrays.toString(arr));
         //bubbleSort(arr);
-        quickSort(arr, 0, arr.length-1);
+        //quickSort(arr, 0, arr.length-1);
+        Arrays.sort(arr);
         System.out.println(Arrays.toString(arr));
         System.out.println(k);
     }
 
     //сделать функцию, которая создает массив случайных целых чисел
     //диапазона от 0 до 99. Аргумент функции - длина массива
+    public static int[] genRandArray(int size)
+    {
+        int[] ar = new int[size];
+        Random random = new Random();
+        for (int i = 0; i < size; i++) {
+            ar[i] = random.nextInt(100);
+        }
+        return ar;
+    }
 
 
     private static int[] readArrayFromF(String fileName) throws FileNotFoundException {
